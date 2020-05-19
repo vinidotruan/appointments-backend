@@ -24,4 +24,6 @@ Route::group([
 
 ], function() {
     Route::resource('roles', 'RoleController');
+    Route::resource('genders', 'GenderController');
+    Route::resource('patients', 'PatientController');
 });

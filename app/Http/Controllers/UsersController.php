@@ -103,7 +103,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(User::paginate(15));
     }
 
     /**

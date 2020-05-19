@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Role;
+use App\Patient;
 use Illuminate\Http\Request;
 
-class RoleController extends Controller
+class PatientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return response()->json(Role::paginate(15));
+        return response()->json(Patient::get());
     }
 
     /**
@@ -25,46 +25,45 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $role = Role::create($request->all());
-        return response()->json($role);
+        $patient = Patient::create($request->all());
+        return response()->json($patient);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Role  $role
+     * @param  \App\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function show(Role $role)
+    public function show(Patient $patient)
     {
-        return response()->json(Role::find($role->id));
+        return response()->json(Patient::find($patient->id));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Role  $role
+     * @param  \App\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request, Patient $patient)
     {
-        $role->update($request->all());
-        $role->save();
+        $patient->update($request->all());
+        $patient->save();
 
-        return response()->json($role);
-
+        return response()->json($patient);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Role $role
+     * @param  \App\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy(Patient $patient)
     {
-        $role->delete();
+        $patient->delete();
         return response()->json(['message' => 'deleted']);
     }
 }

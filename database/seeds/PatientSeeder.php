@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class RoleSeeder extends Seeder
+class PatientSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Role::class, 4)->create();
+        factory(App\Patient::class, 5)->create();
     }
 }

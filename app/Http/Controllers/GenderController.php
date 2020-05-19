@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Role;
+use App\Gender;
 use Illuminate\Http\Request;
 
-class RoleController extends Controller
+class GenderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return response()->json(Role::paginate(15));
+        return response()->json(Gender::paginate(15));
     }
 
     /**
@@ -25,46 +25,45 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $role = Role::create($request->all());
-        return response()->json($role);
+        $gender = Gender::create($request->all());
+        return response()->json($gender);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Role  $role
+     * @param  \App\Gender  $gender
      * @return \Illuminate\Http\Response
      */
-    public function show(Role $role)
+    public function show(Gender $gender)
     {
-        return response()->json(Role::find($role->id));
+        return response()->json(Gender::find($gender->id));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Role  $role
+     * @param  \App\Gender  $gender
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request, Gender $gender)
     {
-        $role->update($request->all());
-        $role->save();
+        $gender->update($request->all());
+        $gender->save();
 
-        return response()->json($role);
-
+        return response()->json($gender);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Role $role
+     * @param  \App\Gender  $gender
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy(Gender $gender)
     {
-        $role->delete();
+        $gender->delete();
         return response()->json(['message' => 'deleted']);
     }
 }
