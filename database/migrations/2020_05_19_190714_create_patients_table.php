@@ -22,6 +22,7 @@ class CreatePatientsTable extends Migration
             $table->date('birthday');
             $table->string('cpf');
             $table->string('rg');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

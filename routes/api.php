@@ -21,9 +21,10 @@ Route::group([
 
 Route::group([
     'middleware' => 'auth:api'
-
 ], function() {
     Route::resource('roles', 'RoleController');
     Route::resource('genders', 'GenderController');
+    Route::resource('users', 'UserControllerController');
     Route::resource('patients', 'PatientController');
+    Route::resource('appointments', 'AppointmentController');
 });

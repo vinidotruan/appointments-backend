@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Patient;
+use App\Appointment;
 use Illuminate\Http\Request;
 
-class PatientController extends Controller
+class AppointmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        return response()->json(Patient::paginate(15));
+        return response()->json(Appointment::paginate(15));
     }
 
     /**
@@ -25,45 +25,45 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        $patient = Patient::create($request->all());
-        return response()->json($patient);
+        $appointment = Appointment::create($request->all());
+        return response()->json($appointment);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Patient  $patient
+     * @param  \App\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function show(Patient $patient)
+    public function show(Appointment $appointment)
     {
-        return response()->json(Patient::find($patient->id));
+        return response()->json(Appointment::find($appointment->id));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Patient  $patient
+     * @param  \App\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Patient $patient)
+    public function update(Request $request, Appointment $appointment)
     {
-        $patient->update($request->all());
-        $patient->save();
+        $appointment->update($request->all());
+        $appointment->save();
 
-        return response()->json($patient);
+        return response()->json($appointment);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Patient  $patient
+     * @param  \App\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Patient $patient)
+    public function destroy(Appointment $appointment)
     {
-        $patient->delete();
+        $appointment->delete();
         return response()->json(['message' => 'deleted']);
     }
 }
