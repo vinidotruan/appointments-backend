@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Patient;
+use App\Address;
+use App\User;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -25,7 +27,10 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->address);
         $patient = Patient::create($request->all());
+        $address = Address::create($request->address);
+        $user = Address::create($request->user);
         return response()->json($patient);
     }
 
