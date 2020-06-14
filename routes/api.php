@@ -27,4 +27,8 @@ Route::group([
     Route::resource('users', 'UserControllerController');
     Route::resource('patients', 'PatientController');
     Route::resource('appointments', 'AppointmentController');
+    Route::resource('states', 'StateController');
+    Route::resource('cities', 'CityController');
+    Route::resource('addresses', 'AddressController');
+    Route::resource('plus-informations', 'PlusInformationController');
 });

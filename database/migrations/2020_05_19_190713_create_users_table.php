@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('gender_id')->nullable();
             $table->foreign('role_id')->references('id')->on('roles');
             $table->foreign('gender_id')->references('id')->on('genders');
+            $table->double('value', 15,2);
             $table->rememberToken();
             $table->timestamps();
         });
