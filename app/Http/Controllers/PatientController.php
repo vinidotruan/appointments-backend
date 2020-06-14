@@ -27,10 +27,11 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->address);
-        $patient = Patient::create($request->all());
+        $user = User::create($request->user);
+        $data = $request->all();
+        $data['user_id'] = $user->id;
+        $patient = Patient::create($data);
         $address = Address::create($request->address);
-        $user = Address::create($request->user);
         return response()->json($patient);
     }
 
