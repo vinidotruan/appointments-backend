@@ -36,4 +36,4 @@ Route::group([
 Route::get('teste', function() {
     $user = App\User::all();
     return $user;
-})
+});
