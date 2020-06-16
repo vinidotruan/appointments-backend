@@ -62,7 +62,7 @@ return [
             'prefix' => '',
             'strict' => true,
             'engine' => null,
-        ]
+        ],
 
         // 'mysql' => [
         //     'driver' => 'mysql',
@@ -82,7 +82,7 @@ return [
         //     'options' => extension_loaded('pdo_mysql') ? array_filter([
         //         PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
         //     ]) : [],
-        ],
+        // ],
 
         'pgsql' => [
             'driver' => 'pgsql',
@@ -110,7 +110,7 @@ return [
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
-        ],
+        ]
 
     ],
 
