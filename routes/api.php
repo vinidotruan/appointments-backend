@@ -32,3 +32,8 @@ Route::group([
     Route::resource('addresses', 'AddressController');
     Route::resource('plus-informations', 'PlusInformationController');
 });
+
+Route::get('teste', function() {
+    $user = App\User::all();
+    return $user;
+})
