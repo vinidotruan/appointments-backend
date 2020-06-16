@@ -15,7 +15,7 @@ class CreatePlusInformationTable extends Migration
     {
         Schema::create('plus_information', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('patient_id');
+            $table->unsignedBigInteger('patient_id');
             $table->string('emergency_contact');
             $table->string('name');
             $table->text('observation');

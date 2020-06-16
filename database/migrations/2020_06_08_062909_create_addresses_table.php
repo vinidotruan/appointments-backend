@@ -15,8 +15,8 @@ class CreateAddressesTable extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('patient_id');
-            $table->bigInteger('city_id');
+            $table->unsignedBigInteger('patient_id');
+            $table->unsignedBigInteger('city_id');
             $table->string('street');
             $table->integer('number');
             $table->string('cep');
