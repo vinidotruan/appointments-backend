@@ -31,7 +31,9 @@ class PatientController extends Controller
         $data = $request->all();
         $data['user_id'] = $user->id;
         $patient = Patient::create($data);
-        $address = Address::create($request->address);
+        $address = $request->address;
+        $address['patient_id'] = $patient->id;
+        $address = Address::create($address);
         return response()->json($patient);
     }
 
