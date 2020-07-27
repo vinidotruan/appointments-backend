@@ -17,8 +17,8 @@ class CreatePatientsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('name');
-            $table->biginteger('telephone');
-            $table->biginteger('phone');
+            $table->string('telephone');
+            $table->string('phone');
             $table->date('birthday');
             $table->string('cpf');
             $table->string('rg');

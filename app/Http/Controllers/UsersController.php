@@ -25,11 +25,15 @@ class UsersController extends Controller
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string|confirmed'
         ]);
+
         $user = new User([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+            'role_id' => $request->role_id,
+            'gender_id' => $request->gender_id,
         ]);
+
         $user->save();
         return response()->json([
             'message' => 'Successfully created user!'
