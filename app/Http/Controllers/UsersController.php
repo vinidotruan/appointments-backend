@@ -32,6 +32,7 @@ class UsersController extends Controller
             'password' => bcrypt($request->password),
             'role_id' => $request->role_id,
             'gender_id' => $request->gender_id,
+            'value' => $request->value,
         ]);
 
         $user->save();
