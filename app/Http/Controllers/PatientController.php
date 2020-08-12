@@ -6,6 +6,8 @@ use App\Patient;
 use App\Address;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class PatientController extends Controller
 {
@@ -27,7 +29,32 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::create($request->user);
+        $validator = Validator::make($request->user,[
+            'name' => 'required|string',
+            'email' => 'required|string|email|unique:users',
+            'password' => 'required|string|confirmed'
+        ]);
+
+        if($validator->fails()) {
+            $errors = $validator->errors();
+            if($errors->has('email')) {
+                return response()->json(['message' => $errors], 422);
+            }
+
+            return response()->json(['message' => $errors], 500);
+        }
+
+        $user = new User([
+            'name' => $request->user['name'],
+            'email' => $request->user['email'],
+            'password' => bcrypt($request->user['password']),
+            'role_id' => $request->user['role_id'],
+            'gender_id' => $request->user['gender_id'],
+            'value' => $request->user['value'],
+        ]);
+
+        $user->save();
+
         $data = $request->all();
         $data['user_id'] = $user->id;
         $patient = Patient::create($data);
