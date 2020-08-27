@@ -19,7 +19,7 @@ class CreateAddressesTable extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('street');
-            $table->string('complement');
+            $table->string('complement')->nullable();
             $table->integer('number');
             $table->string('neighborhood');
             $table->string('cep');
