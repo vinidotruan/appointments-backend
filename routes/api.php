@@ -37,3 +37,12 @@ Route::get('teste', function() {
     $user = App\User::all();
     return $user;
 });
+
+Route::group([
+    'prefix' => 'attachements'
+], function() {
+    Route::get('patients/{patient}', 'FileController@listByPatient');
+    Route::post('upload', 'FileController@upload');
+    Route::post('{file}/patients/{patient}', 'FileController@attachToPatient');
+    Route::get('', 'FileController@index');
+});
