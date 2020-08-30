@@ -10,6 +10,7 @@ $factory->define(Appointment::class, function (Faker $faker) {
         'patient_id' => App\Patient::all()->random()->id,
         'date' =>  $faker->date('Y-m-d', 'now'),
         'notes' => $faker->text(),
+        'time' => $faker->time($format = 'H:i'),
         'cronogram' => $faker->text(),
         'todo_list' => $faker->text(),
         'abstract' => $faker->text(),
