@@ -17,11 +17,11 @@ class CreatePatientsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('name');
-            $table->string('telephone');
-            $table->string('phone');
-            $table->date('birthday');
+            $table->string('telephone')->nullable();
+            $table->string('phone')->nullable();
+            $table->date('birthday')->nullable();
             $table->string('cpf');
-            $table->string('rg');
+            $table->string('rg')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });

@@ -14,4 +14,10 @@ class Patient extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function files()
+    {
+        return $this->belongsToMany(File::class, 'files_patients');
+
+    }
 }

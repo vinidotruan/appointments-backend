@@ -16,8 +16,11 @@ class PatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if($request->page && $request->page == -1) {
+            return response()->json(Patient::all());
+        }
         return response()->json(Patient::paginate(15));
     }
 
