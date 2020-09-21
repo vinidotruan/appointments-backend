@@ -23,7 +23,6 @@ class CreateAppointmentsTable extends Migration
             $table->text('abstract')->nullable();
             $table->text('todo_list')->nullable();
             $table->string('link');
-            $table->boolean('receipt');
             $table->timestamps();
         });
     }
