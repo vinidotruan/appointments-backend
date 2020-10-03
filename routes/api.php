@@ -33,11 +33,6 @@ Route::group([
     Route::resource('plus-informations', 'PlusInformationController');
 });
 
-Route::get('teste', function() {
-    $user = App\User::all();
-    return $user;
-});
-
 Route::group([
     'prefix' => 'attachements'
 ], function() {
