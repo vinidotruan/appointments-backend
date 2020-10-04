@@ -15,6 +15,5 @@ $factory->define(Appointment::class, function (Faker $faker) {
         'todo_list' => $faker->text(),
         'abstract' => $faker->text(),
         'link' => $faker->url(),
-        'receipt' => $faker->boolean(),
     ];
 });
