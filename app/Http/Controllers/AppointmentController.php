@@ -14,6 +14,9 @@ class AppointmentController extends Controller
      */
     public function index()
     {
+        if($request->page && $request->page == -1) {
+            return response()->json(Appointment::all());
+        }
         return response()->json(Appointment::paginate(15));
     }
 
