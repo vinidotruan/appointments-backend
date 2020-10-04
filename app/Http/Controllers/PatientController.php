@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Patient;
 use App\Address;
+use App\PlusInformation;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -87,8 +88,28 @@ class PatientController extends Controller
      */
     public function update(Request $request, Patient $patient)
     {
+        if($patient->addresses()) {
+            $patient->addresses()->update($request->addresses);
+            $patient->addresses->save();
+        } else {
+            $newAddres = Address::create($request->address);
+        }
+
+        if($patient->plusInformations()) {
+            $patient->plusInformations()->update($request->plusInformations);
+            $patient->plusInformations->save();
+        } else {
+            $newPlusInformation =  PlusInformation::create($request->plusInformations);
+        }
+
+        $usersInfos = $request->user;
+        $usersInfos['password'] = $request->user['password'] ? bcrypt($request->user['password']) : $patient->user->password;
+
         $patient->update($request->all());
         $patient->save();
+
+        $patient->user()->update($usersInfos);
+        $patient->user->save();
 
         return response()->json($patient);
     }

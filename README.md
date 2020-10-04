@@ -155,7 +155,29 @@ ENDPOINTS
         'phone':<string>(nullable),
         'birthday':<date('YYYY-mm-dd')>(nullable),
         'cpf':<string>,
-        'rg': <string>(nullable)
+        'rg': <string>(nullable),
+        'user': {
+          'name': <string>,
+          'email': <string>,
+          'password': <string>,
+          'role_id': <integer>,
+          'gender_id': <integer>,
+          'value': <double>,
+        },
+        'addresses': {
+          'city': <string>,
+          'state': <string>,
+          'street': <string>,
+          'complement': <string>,
+          'number': <string>,
+          'neighborhood': <string>,
+          'cep': <string>,
+        },
+        'plusInformations': {
+          'emergency_contact': <string>,
+          'name': <string>,
+          'observation': <string>,
+        }
       }
       - [RETURN] - Patient<patients> - {
         'id': <integer>,
