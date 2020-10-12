@@ -49,6 +49,8 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
 
+        // Deixa o código pra ficar mais fácil :D
+
         
         'mysql' => [
             'driver' => 'mysql',
