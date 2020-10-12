@@ -18,7 +18,7 @@ class FileController extends Controller
             $date = date('Y-m-d');
             $extension = $file->extension();
 
-            $path = asset('storage/'.$file->store('attachments', ['disk' => 'public']));
+            $path = asset('storage/'.$file->store('attachements', ['disk' => 'public']));
 
             File::create([
                 'name' => $filename,
