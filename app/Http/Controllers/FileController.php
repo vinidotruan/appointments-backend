@@ -12,22 +12,23 @@ class FileController extends Controller
     public function upload(Request $request)
     {
         $files = $request->file('files');
+        $uploadedFiles = [];
 
         foreach ($files as $key => $file) {
             $filename =  str_replace(' ', '', $file->getClientOriginalName());
             $date = date('Y-m-d');
             $extension = $file->extension();
 
-            $path = asset('storage/'.$file->store('attachments', ['disk' => 'public']));
+            $path = asset('storage/'.$file->store('attachements', ['disk' => 'public']));
 
-            File::create([
-                'name' => $filename,
-                'path' => $path,
-                'type' => $extension
+            $uploadedFiles[] = File::create([
+                "name" => $filename,
+                "path" => $path,
+                "type" => $extension
             ]);
         }
 
-        return response()->json(['message' => 'data uploaded']);
+        return response()->json($uploadedFiles);
     }
 
     public function attachToPatient(File $file, Patient $patient)

@@ -12,8 +12,11 @@ class AppointmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if($request->page && $request->page == -1) {
+            return response()->json(Appointment::all());
+        }
         return response()->json(Appointment::paginate(15));
     }
 
