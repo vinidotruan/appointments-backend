@@ -31,6 +31,7 @@ Route::group([
     Route::resource('cities', 'CityController');
     Route::resource('addresses', 'AddressController');
     Route::resource('plus-informations', 'PlusInformationController');
+    Route::get('appointments/patient/{patient}', 'AppointmentController@fetchByPatient');
 });
 
 Route::group([
