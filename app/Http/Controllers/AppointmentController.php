@@ -69,4 +69,9 @@ class AppointmentController extends Controller
         $appointment->delete();
         return response()->json(['message' => 'deleted']);
     }
+
+    public function fetchByPatient($id)
+    {
+        return response()->json(Appointment::where("patient_id", $id)->get());
+    }
 }
