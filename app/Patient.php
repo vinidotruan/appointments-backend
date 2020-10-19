@@ -15,6 +15,16 @@ class Patient extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function addresses()
+    {
+        return $this->belongsTo(Address::class);
+    }
+
+    public function plusInformations()
+    {
+        return $this->belongsTo(PlusInformation::class);
+    }
+
     public function files()
     {
         return $this->belongsToMany(File::class, 'files_patients');

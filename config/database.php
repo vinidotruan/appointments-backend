@@ -6,7 +6,7 @@ $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 $host = $url["host"] ?? '126.0.0.1';
 $username = $url["user"] ?? 'root';
 $password = $url["pass"] ?? null;
-$database = substr($url["path"], 1);
+$database = substr($url["path"], 1) ?? 'appointments';
 
 return [
 
@@ -49,6 +49,7 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
 
+        
         // 'mysql' => [
         //     'driver' => 'mysql',
         //     'host' => $host,
