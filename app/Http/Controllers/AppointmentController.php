@@ -12,8 +12,11 @@ class AppointmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if($request->page && $request->page == -1) {
+            return response()->json(Appointment::all());
+        }
         return response()->json(Appointment::paginate(15));
     }
 
@@ -65,5 +68,10 @@ class AppointmentController extends Controller
     {
         $appointment->delete();
         return response()->json(['message' => 'deleted']);
+    }
+
+    public function fetchByPatient($id)
+    {
+        return response()->json(Appointment::where("patient_id", $id)->get());
     }
 }

@@ -53,7 +53,6 @@ class RoleController extends Controller
         $role->save();
 
         return response()->json($role);
-
     }
 
     /**
