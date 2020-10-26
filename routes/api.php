@@ -33,6 +33,7 @@ Route::group([
     Route::resource('plus-informations', 'PlusInformationController');
     Route::get('appointments/patient/{patient}', 'AppointmentController@fetchByPatient');
     Route::get('made-appointments', 'AppointmentController@madeAppointments');
+    Route::get('todays-appointments', 'AppointmentController@todaysAppointments');
 });
 
 Route::group([

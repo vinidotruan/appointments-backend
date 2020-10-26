@@ -75,8 +75,15 @@ class AppointmentController extends Controller
         return response()->json(Appointment::where("patient_id", $id)->get());
     }
 
+    public function todaysAppointments()
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+        return response()->json(Appointment::where("date", date("Y-m-d"))->get());
+    }
+
     public function madeAppointments()
     {
-        return response()->json(Appointment::where("date", date("Y-m-d"))->get());
+        date_default_timezone_set('America/Sao_Paulo');
+        return response()->json(Appointment::where("date", "<", date("Y-m-d"))->count());
     }
 }
