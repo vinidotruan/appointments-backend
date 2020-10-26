@@ -74,4 +74,9 @@ class AppointmentController extends Controller
     {
         return response()->json(Appointment::where("patient_id", $id)->get());
     }
+
+    public function madeAppointments()
+    {
+        return response()->json(Appointment::where("date", date("Y-m-d"))->get());
+    }
 }
