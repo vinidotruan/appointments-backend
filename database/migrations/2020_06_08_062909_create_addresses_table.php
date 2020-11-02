@@ -24,6 +24,7 @@ class CreateAddressesTable extends Migration
             $table->integer('number')->nullable();
             $table->string('neighborhood')->nullable();
             $table->string('cep')->nullable();
+            $table->string('foreign_cep')->nullable();
             $table->timestamps();
         });
     }
