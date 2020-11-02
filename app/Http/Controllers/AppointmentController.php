@@ -15,9 +15,9 @@ class AppointmentController extends Controller
     public function index(Request $request)
     {
         if($request->page && $request->page == -1) {
-            return response()->json(Appointment::all());
+            return response()->json(Appointment::with('patient')->get());
         }
-        return response()->json(Appointment::paginate(15));
+        return response()->json(Appointment::with('patient')->paginate(15));
     }
 
     /**
@@ -78,7 +78,7 @@ class AppointmentController extends Controller
     public function todaysAppointments()
     {
         date_default_timezone_set('America/Sao_Paulo');
-        return response()->json(Appointment::where("date", date("Y-m-d"))->get());
+        return response()->json(Appointment::with('patient')->where("date", date("Y-m-d"))->get());
     }
 
     public function madeAppointments()

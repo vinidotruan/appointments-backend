@@ -25,7 +25,7 @@ class PlusInformationController extends Controller
      */
     public function store(Request $request)
     {
-        $response = PlusInfomation::create($request->all());
+        $response = PlusInformation::create($request->all());
         return response()->json($response);
     }
 
