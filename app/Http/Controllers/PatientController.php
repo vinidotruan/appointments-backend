@@ -20,9 +20,9 @@ class PatientController extends Controller
     public function index(Request $request)
     {
         if($request->page && $request->page == -1) {
-            return response()->json(Patient::all());
+            return response()->json(Patient::orderBy('name')->get());
         }
-        return response()->json(Patient::paginate(15));
+        return response()->json(Patient::orderBy('name')->paginate(15));
     }
 
     /**
@@ -103,7 +103,10 @@ class PatientController extends Controller
         }
 
         $usersInfos = $request->user;
-        $usersInfos['password'] = $request->user['password'] ? bcrypt($request->user['password']) : $patient->user->password;
+        
+        $usersInfos['password'] = $request->user['password'] ? 
+        bcrypt($request->user['password']) : 
+        $patient->user->password;
 
         $patient->update($request->all());
         $patient->save();
@@ -124,5 +127,12 @@ class PatientController extends Controller
     {
         $patient->delete();
         return response()->json(['message' => 'deleted']);
+    }
+
+    public function search(Request $request) {        
+        $value = $request->value;
+        $patient = Patient::where('name', 'like', "%{$value}%")->paginate(15);
+        
+        return response()->json($patient);
     }
 }
