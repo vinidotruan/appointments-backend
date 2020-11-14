@@ -34,6 +34,7 @@ Route::group([
     Route::get('appointments/patient/{patient}', 'AppointmentController@fetchByPatient');
     Route::get('made-appointments', 'AppointmentController@madeAppointments');
     Route::get('todays-appointments', 'AppointmentController@todaysAppointments');
+    Route::post('patients/search', 'PatientController@search');
 });
 
 Route::group([
