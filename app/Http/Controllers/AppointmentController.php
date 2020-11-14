@@ -15,9 +15,13 @@ class AppointmentController extends Controller
     public function index(Request $request)
     {
         if($request->page && $request->page == -1) {
-            return response()->json(Appointment::with('patient')->get());
+            return response()->json(
+                Appointment::with('patient')->orderBy('date', 'DESC')->get()
+            );
         }
-        return response()->json(Appointment::with('patient')->paginate(15));
+        return response()->json(
+            Appointment::with('patient')->orderBy('date', 'DESC')->paginate(15)
+        );
     }
 
     /**
