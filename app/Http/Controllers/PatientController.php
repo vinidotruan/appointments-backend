@@ -77,9 +77,9 @@ class PatientController extends Controller
     public function show(Patient $patient)
     {
         return response()->json([
-            "patient" => Patient::find($patient->id),
-            "user" => User::where("id", "=", $patient->user_id),
-            "address" => Address::where("patient_id", "=", $patient->id)
+            ...Patient::find($patient->id),
+            ...User::where("id", "=", $patient->user_id),
+            ...Address::where("patient_id", "=", $patient->id)
         ]);
     }
 
