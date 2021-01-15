@@ -6,6 +6,7 @@ use App\Patient;
 use App\Address;
 use App\PlusInformation;
 use App\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -76,11 +77,13 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        return response()->json([
-            ...Patient::find($patient->id),
-            ...User::where("id", "=", $patient->user_id),
-            ...Address::where("patient_id", "=", $patient->id)
-        ]);
+        return response()->json(
+            DB::table("patients")
+            ->join("addresses", "addresses.patient_id", "=", "patients.id")
+            ->join("users", "users.id", "=", "patients.user_id")
+            ->where("patients.id", "=", $patient->id)
+            ->get()
+        );
     }
 
     /**
