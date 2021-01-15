@@ -83,6 +83,7 @@ class PatientController extends Controller
             ->join("users", "users.id", "=", "patients.user_id")
             ->where("patients.id", "=", $patient->id)
             ->get()
+            ->makeHidden("password")
         );
     }
 
