@@ -30,17 +30,17 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
-        // Admin default user
-        DB::table('users')->insert(
-            array(
-                'name' => 'admin',
-                'email' => 'admin@admin',
-                'password' => Hash::make('password'),
-                'role_id' => 1,
-                'gender_id' => 1,
-                'value' => 1
-            )
-        );
+        // // Admin default user
+        // DB::table('users')->insert(
+        //     array(
+        //         'name' => 'admin',
+        //         'email' => 'admin@admin',
+        //         'password' => Hash::make('password'),
+        //         'role_id' => 1,
+        //         'gender_id' => 1,
+        //         'value' => 1
+        //     )
+        // );
     }
 
     /**

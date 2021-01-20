@@ -22,7 +22,11 @@ class CreateAppointmentsTable extends Migration
             $table->text('cronogram')->nullable();
             $table->text('abstract')->nullable();
             $table->text('todo_list')->nullable();
+            $table->text('password')->nullable();
+            $table->text('description')->nullable();
+            $table->double('value', 15,2);
             $table->string('link');
+            $table->boolean('done')->default(0);
             $table->timestamps();
         });
     }
