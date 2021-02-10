@@ -76,7 +76,11 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        return response()->json(Patient::find($patient->id));
+        $res = Patient::with('address')
+        ->with('user')
+        ->with('plusInformations')
+        ->find($patient->id);
+        return response()->json($res);
     }
 
     /**
@@ -88,9 +92,9 @@ class PatientController extends Controller
      */
     public function update(Request $request, Patient $patient)
     {
-        if($patient->addresses()) {
-            $patient->addresses()->update($request->addresses);
-            $patient->addresses->save();
+        if($patient->address()) {
+            $patient->address()->update($request->address);
+            $patient->address->save();
         } else {
             $newAddres = Address::create($request->address);
         }

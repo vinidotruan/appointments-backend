@@ -15,14 +15,14 @@ class Patient extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function addresses()
+    public function address()
     {
-        return $this->belongsTo(Address::class);
+        return $this->hasOne(Address::class);
     }
 
     public function plusInformations()
     {
-        return $this->belongsTo(PlusInformation::class);
+        return $this->hasOne(PlusInformation::class);
     }
 
     public function files()
